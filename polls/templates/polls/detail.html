@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Question: {{ question }}
+{% endblock %}
+
+{% block body %}
+  <div class="card">
+    <form action="{% url 'polls:vote' question.id %}" method='post'>
+    {% csrf_token %}
+    <div class='card-body'>
+      <h3 class="card-title">Q: {{ question.question_text }}</h3>
+      {% if error_message %}
+          <p><strong>{{ error_message }}</strong></p>
+      {% endif %}
+        
+        
+      {% for choice in question.choice_set.all %}      {# forloop.counter checks the times the iteratior has passed through #}
+      <div class="form-check">
+          <input class="form-check-input" type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
+          <label class="form-check-label" for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label>
+          <br>
+      </div>
+      {% endfor %}
+
+      <input type="submit" value="Vote!" />
+    </div>
+    </form>
+  </div>
+
+  <a href="../">&lAarr; Go back</a>
+{% endblock %}

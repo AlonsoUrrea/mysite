@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Results: {{ question.question_text }} {# from Question object extract the text #}
+{% endblock %}
+
+{% block body %}
+  <h3>{{ question.question_text }}</h3>
+
+  <table>
+      <thead>
+          <th>Choice</th>
+          <th>Vote(s)</th>
+      </thead>
+
+      {% for choice in question.choice_set.all %}
+          <tr>
+              <td>{{ choice.choice_text }}</td>
+              <td>{{ choice.votes }}</td>
+          </tr>
+      {% endfor %}
+  </table>
+
+  <a href="{% url 'polls:detail' question.id %}">Vote again?</a>
+{% endblock %}
