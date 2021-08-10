@@ -78,8 +78,8 @@ DATABASES = { # changed for database
     'default': {
         'ENGINE' : 'django.db.backends.mysql',
         'NAME' : 'db_mysite', # Path to database or db alias
-        'USER' : 'django',           # Your db user
-        'PASSWORD' : 'python',         # db user password
+        'USER' : 'user',           # Your db user
+        'PASSWORD' : 'password',         # db user password
         'HOST' : '127.0.0.1',        # Your host machine
         'PORT' : '3306',             # If is empty, use default 3050
         #'OPTIONS' : {'charset':'ISO8859_1'}
